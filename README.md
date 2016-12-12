@@ -23,3 +23,7 @@ Click [here](https://github.com/StephenGrider/ReactStarter/releases) then downlo
 	> npm install
 	> npm start
 ```
+
+///////////////////////////////////////////
+# ! #
+http://reduxblog.herokuapp.com/
