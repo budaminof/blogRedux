@@ -6,7 +6,7 @@ const ROOT_UTL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY = '?key=tinytinytinytinytinytinytiny';
 
 export function fetchPosts() {
-  const request = axios.get(`${ROOT_UTL}/posts/${API_KEY}`);
+  const request = axios.get(`${ROOT_UTL}/posts${API_KEY}`);
 
   return {
     type: FETCH_POSTS,
