@@ -9,7 +9,6 @@ class PostsNew extends Component {
     this.props.createPost(props)
       .then(()=> {
         // blog post has been created navigate user to the index
-        // we navigate by calling this.context.router.push with the new path
         browserHistory.push('/');
        })
   }
