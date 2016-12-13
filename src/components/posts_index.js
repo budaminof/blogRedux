@@ -8,6 +8,8 @@ class PostsIndex extends Component {
   // react will pull this method when ever a componenet is about to be
   // render for the first time. called only once.
   componentWillMount() {
+    // calling the action creator to fecth the posts.
+    // the connect function only gave us access to this function.
     this.props.fetchPosts();
   }
 
