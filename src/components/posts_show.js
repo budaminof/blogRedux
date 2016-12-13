@@ -4,6 +4,7 @@ import { fetchPost, deletePost } from '../actions/index';
 import { Link } from 'react-router';
 
 class PostsShow extends Component {
+  //look up contextTypes assignment.
   static contextTypes = {
     router: PropTypes.object
   };
