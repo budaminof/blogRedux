@@ -11,21 +11,38 @@ class PostsIndex extends Component {
     this.props.fetchPosts();
   }
 
+  renderPosts() {
+    return this.props.posts.map(post => {
+      return (
+        <li className="list-group-item" key={post.id} >
+          <span className="float-right">{post.categories}</span>
+          <strong>{post.title}</strong>
+        </li>
+      );
+    })
+  }
+
   render() {
     return (
       <div>
-        <div clasName="text-xs-right">
+        <div className="float-right">
           <Link to="/posts/new" className="btn btn-primary">
             Add Post
           </Link>
         </div>
-        List of blog posts
+        <h3>Posts</h3>
+        <ul className="list-group">
+          { this.renderPosts() }
+        </ul>
       </div>
     );
   }
 }
 
+function mapStateToProps(state) {
+  return { posts: state.posts.all };
+}
 // a shortcut for the mapDispatchToProps and bindActionCreators =>
 // { fetchPosts: fetchPosts } just pass it as an object to PostsIndex;
-export default connect(null, { fetchPosts })(PostsIndex);
+export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
 // null is instead of mapStateToProps
