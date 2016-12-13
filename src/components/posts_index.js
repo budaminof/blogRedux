@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/index';
 import { Link } from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class PostsIndex extends Component {
   // life cycle method
@@ -16,17 +17,23 @@ class PostsIndex extends Component {
   renderPosts() {
     return this.props.posts.map(post => {
       return (
-        <li className="list-group-item" key={post.id} >
-          <Link to={`posts/${post.id}`}>
-            <span className="float-right">{post.categories}</span>
-            <strong>{post.title}</strong>
-          </Link>
-        </li>
+          <li className="list-group-item" key={post.id} >
+            <Link to={`posts/${post.id}`}>
+              <span className="float-right">{post.categories}</span>
+              <strong>{post.title}</strong>
+            </Link>
+          </li>
       );
     })
   }
 
   render() {
+    const transitionOptions = {
+      transitionName: "fade",
+      transitionEnterTimeout: 500,
+      transitionLeaveTimeout: 500
+    };
+
     return (
       <div>
         <div className="float-right">
@@ -36,7 +43,9 @@ class PostsIndex extends Component {
         </div>
         <h3>Posts</h3>
         <ul className="list-group">
-          { this.renderPosts() }
+          <ReactCSSTransitionGroup { ...transitionOptions } >
+            { this.renderPosts() }
+          </ReactCSSTransitionGroup>
         </ul>
       </div>
     );

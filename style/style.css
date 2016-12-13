@@ -1,3 +1,13 @@
 form a {
   margin-left: 5px;
 }
+
+/* starting state of animation */
+.fade-enter {
+  right: 100px;
+}
+/* end of animatino */
+.fade-enter-active {
+  right: 0px;
+  transition: .5s ease-in all;
+}
