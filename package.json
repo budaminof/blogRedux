@@ -32,6 +32,7 @@
     "react": "^0.14.3",
     "react-addons-css-transition-group": "^15.4.1",
     "react-dom": "^0.14.3",
+    "react-flatpickr-bud": "^3.0.1",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.0-rc5",
     "redux": "^3.0.4",
