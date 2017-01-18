@@ -23,16 +23,17 @@ export default class App extends Component {
   getData() {
     //  call to server for data
     // updates data
+    return this.state;
   }
 
   render() {
+
     return (
       <div>
-        <DateComponent
-          defaultStart={ this.state.startDate }
-          defaultEnd={ this.state.endDate }
-          onDateChange={ this.dateChange.bind(this) }
-        />
+      <DateComponent
+        defaultStart={ this.state.startDate }
+        defaultEnd={ this.state.endDate }
+        onDateChange={ this.dateChange.bind(this) } />
         { this.props.children }
       </div>
 

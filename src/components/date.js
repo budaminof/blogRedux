@@ -11,48 +11,51 @@ class DateComponent extends Component {
     }
   }
 
-  onChangeStart(selectedDates, dateStr, instance) {
+  onChangeStart(selectedDates) {
     this.setState({startDate: selectedDates[0]});
   }
 
-  onChangeEnd(selectedDates, dateStr, instance) {
+  onChangeEnd(selectedDates) {
     this.setState({endDate: selectedDates[0]});
   }
 
   dateChange(e) {
     e.preventDefault();
-    this.props.onDateChange(this.state.startDate, this.state.endDate);
+    if (this.state.endDate < this.state.startDate) {
+      this.props.onDateChange(this.state.endDate, this.state.startDate);
+    } else {
+      this.props.onDateChange(this.state.startDate, this.state.endDate);
+    }
   }
 
   render() {
+
     return (
       <div style={{'paddingTop': '300px'}}>
       <form onSubmit={this.dateChange.bind(this)}>
       <p>START DATE:</p>
-        <Flatpickr data-enable-time
-          options={{
-            altInput: true,
-	          altFormat: "F j, Y h:i K",
-            closeAlways: true,
-            allowInput: true,
-            maxDate: this.state.endDate,
-          }}
-          value={this.state.startDate}
-          onChange={(selectedDates, dateStr, instance) => this.onChangeStart(selectedDates, dateStr, instance)} />
+      <Flatpickr data-enable-time
+        options={{
+          altInput: true,
+          altFormat: "F j, Y h:i K",
+          closeAlways: true,
+          maxDate: this.state.endDate,
+        }}
+        value={this.state.startDate}
+        onChange={(selectedDates) => this.onChangeStart(selectedDates)} />
 
       <p>END DATE:</p>
-        <Flatpickr data-enable-time
-          options={{
-            altInput: true,
-            altFormat: "F j, Y h:i K",
-            closeAlways: true,
-            allowInput: true,
-            maxDate: new Date(Date.now()),
-          }}
-          value={this.state.endDate}
-          onChange={(selectedDates, dateStr, instance) => this.onChangeEnd(selectedDates, dateStr, instance)} />
-          <br/>
-          <input type="submit" value="SEARCH"/>
+      <Flatpickr data-enable-time
+        options={{
+          altInput: true,
+          altFormat: "F j, Y h:i K",
+          closeAlways: true,
+          maxDate: new Date(Date.now()),
+        }}
+        value={this.state.endDate}
+        onChange={(selectedDates) => this.onChangeEnd(selectedDates)} />
+        <br/>
+        <input type="submit" value="SEARCH"/>
         </form>
       </div>
     )
