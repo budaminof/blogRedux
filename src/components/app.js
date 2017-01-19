@@ -11,20 +11,24 @@ export default class App extends Component {
     }
   }
 
-  dateChange(start, end) {
-    console.log("App:", start, end);
-    this.setState({
-      startDate: start,
-      endDate: end
-    })
-    return this.getData();
+  startDateChange(date) {
+    this.setState({startDate: date})
   }
 
-  getData() {
-    //  call to server for data
-    // updates data
-    return this.state;
+  endDateChange(date){
+    this.setState({endDate: date})
   }
+
+  search() {
+    console.log('DATES SEARCH: ', this.state);
+    // make call to DB
+    if (this.state.endDate < this.state.startDate) {
+
+    } else {
+
+    }
+  }
+
 
   render() {
 
@@ -33,7 +37,10 @@ export default class App extends Component {
       <DateComponent
         defaultStart={ this.state.startDate }
         defaultEnd={ this.state.endDate }
-        onDateChange={ this.dateChange.bind(this) } />
+        onStartDateChange={ this.startDateChange.bind(this) }
+        onEndDateChange={ this.endDateChange.bind(this) }
+         />
+        <button onClick={ this.search.bind(this) }>SEARCH FOR DATES</button>
         { this.props.children }
       </div>
 

@@ -8,15 +8,15 @@ import DateComponent from '../../src/components/date';
 xdescribe('<App />', () => {
   it('should have an initial startDate state', function () {
     const wrapper = mount(<App/>);
-    let dateFromComponent = wrapper.state().startDate;
-    let ourDate = new Date(new Date(Date.now()).getTime() - 7 * 24 * 60 * 60 * 1000);
+    const dateFromComponent = wrapper.state().startDate;
+    const ourDate = new Date(new Date(Date.now()).getTime() - 7 * 24 * 60 * 60 * 1000);
     expect((dateFromComponent - ourDate) < 1000 ).to.equal(true);
   });
 
   it('should have an initial endDate state', function () {
     const wrapper = mount(<App/>);
-    let dateFromComponent = wrapper.state().endDate;
-    let ourDate = new Date(Date.now());
+    const dateFromComponent = wrapper.state().endDate;
+    const ourDate = new Date(Date.now());
     expect((dateFromComponent - ourDate) < 1000 ).to.equal(true);
   });
 
